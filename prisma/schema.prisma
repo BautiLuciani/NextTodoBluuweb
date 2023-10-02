@@ -1,0 +1,19 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// Todo schema
+model Todo {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  // Agregamos userId para relacionar un todo con un usuario
+  userId String 
+}
